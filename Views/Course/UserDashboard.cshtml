@@ -1,0 +1,26 @@
+﻿@model IEnumerable<FinalProject.Models.UserCourses>
+
+<h2>لوحة تحكم المستخدم</h2>
+
+<ul>
+    @foreach (var userCourse in Model)
+    {
+        <li>
+            <strong>دورة:</strong> @userCourse.Course.Title
+            - <strong>التقييم:</strong> @userCourse.Rating
+            - <strong>مفضلة:</strong> @(userCourse.IsFavorite ? "نعم" : "لا")
+            - <strong>الإعجابات:</strong> @userCourse.Likes
+            - <strong>عدم الإعجابات:</strong> @userCourse.Dislikes
+            <form method="post" asp-action="LikeCourse" asp-route-courseId="@userCourse.CourseId">
+                <button type="submit">Like</button>
+            </form>
+            <form method="post" asp-action="DislikeCourse" asp-route-courseId="@userCourse.CourseId">
+                <button type="submit">Dislike</button>
+            </form>
+            <a href="@userCourse.Course.YouTubeLink" target="_blank">مشاهدة الدورة</a>
+        </li>
+    }
+</ul>
+
+
+

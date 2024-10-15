@@ -1,0 +1,20 @@
+﻿@using FinalProject.ViewModels
+@{
+    ViewData["Title"] = "SignUp";
+    Layout = "~/Views/Shared/_SignuPLayout.cshtml";
+}
+@model SignUpViewModels
+<div asp-validation-summary="All"></div>
+<form asp-action="SignUp" method="post" class="register-form">
+    <input asp-for="fname" type="text" placeholder="First Name" />
+    <input asp-for="lname" type="text" placeholder="Last Name" />
+    <input asp-for="Email" type="text" placeholder="email address" />
+    <input asp-for="Password" type="password" placeholder="password" />
+    <input asp-for="ConformPassword" type="password" placeholder="confirm password" />
+    <button type="submit">Sign-Up</button>
+    <p class="message">Already registered? <a asp-action="LogIn">Sign In</a></p>
+</form>
+
+
+
+

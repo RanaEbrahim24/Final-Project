@@ -1,0 +1,64 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: url('https://b1826438.smushcdn.com/1826438/wp-content/uploads/2022/06/Best-online-courses-for-kids.jpg?lossy=1&strip=1&webp=1') no-repeat center center fixed;
+    background-size: cover;
+    font-family: "Roboto", sans-serif;
+}
+
+
+
+.form {
+    background-color: rgba(255, 255, 255, 0.8);
+    max-width: 360px;
+    padding: 45px;
+    text-align: center;
+    border: 2px solid black;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+    .form input {
+        font-family: "Roboto", sans-serif;
+        outline: 0;
+        background-color: white;
+        width: 100%;
+        border: 1px solid black;
+        margin: 0 0 15px;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 16px;
+        color: black;
+    }
+
+    .form button {
+        font-family: "Roboto", sans-serif;
+        text-transform: uppercase;
+        outline: 0;
+        background-color: green;
+        width: 100%;
+        border: 0;
+        padding: 15px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+        .form button:hover, .form button:active, .form button:focus {
+            background-color: #43A047;
+        }
+
+    .form .message {
+        margin: 15px 0 0;
+        color: #b3b3b3;
+        font-size: 12px;
+    }
+
+        .form .message a {
+            color: #4CAF50;
+            text-decoration: none;
+        }

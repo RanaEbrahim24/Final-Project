@@ -1,0 +1,15 @@
+﻿@using FinalProject.ViewModels
+
+@{
+    ViewData["Title"] = "LogIn";
+    Layout = "~/Views/Shared/_SignuPLayout.cshtml";
+}
+@model  LogInViewModels
+<div asp-validation-summary="All"></div>
+<form asp-action="LogIn" method="post" class="login-form">
+    <input asp-for="Email" type="text" placeholder="email address" />
+    <input asp-for="Password" type="password" placeholder="password" />
+    <button type="submit">login</button>
+    <p class="message">Not registered? <a asp-action="SignUp">Create an account</a></p>
+</form>
+

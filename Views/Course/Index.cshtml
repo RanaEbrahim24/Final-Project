@@ -1,0 +1,132 @@
+﻿@model IEnumerable<dynamic>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Courses</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <script src="~/assets/js/vendor/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <main>
+        <section class="all-course section-padding30">
+            <div class="container">
+                <div class="row">
+                    <div class="all-course-wrapper">
+                        <div class="row mb-15">
+                            <div class="col-lg-12">
+                                <div class="tab-content" id="nav-tabContent">
+                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel">
+                                        <div class="row">
+                                            @if (Model != null && Model.Any())
+                                            {
+                                                foreach (var item in Model)
+                                                {
+                                                    var course = item.Course; // استخرج الدورة
+                                                    var isLiked = item.IsLiked; // حالة الإعجاب
+                                                    var isDisliked = item.IsDisliked; // حالة عدم الإعجاب
+                                                    var isSaved = item.IsSaved; // حالة الحفظ
+
+                                                    <div class="col-xl-4 col-lg-4 col-md-6 course-item" data-category="@course.Category.ToLower()">
+                                                        <div class="single-course mb-70">
+                                                            <div class="course-img">
+                                                                <a href="@course.YouTubeLink" target="_blank">
+                                                                    <img src="@course.ImageUrl" alt="@course.Title" />
+                                                                </a>
+                                                            </div>
+                                                            <div class="course-caption">
+                                                                <h4><a href="@course.YouTubeLink" target="_blank">@course.Title</a></h4>
+                                                                <p>Duration: @course.DurationInHours hours</p>
+                                                                <p>Number of Projects: @course.ProjectCount</p>
+
+                                                                <!-- Action buttons -->
+                                                                <div class="course-actions">
+                                                                    <span class="custom-button like-button @(isLiked ? "liked" : "")" title="Like" onclick="likeCourse(@course.CourseId)">
+                                                                        👍
+                                                                    </span>
+                                                                    <span class="custom-button dislike-button @(isDisliked ? "disliked" : "")" title="Dislike" onclick="dislikeCourse(@course.CourseId)">
+                                                                        👎
+                                                                    </span>
+                                                                    <span class="custom-button save-button @(isSaved ? "saved" : "")" title="Save" onclick="saveCourse(@course.CourseId)">
+                                                                        💾
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <p>No courses available.</p>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-area footer-bg">
+            <div class="container">
+                <div class="footer-bottom">
+                    <div class="row d-flex align-items-center">
+                        <div class="col-lg-12 text-center">
+                            <p>&copy;<script>document.write(new Date().getFullYear());</script> All rights reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script>
+        function likeCourse(courseId) {
+            $.post('@Url.Action("Like", "Course")', { courseId: courseId }, function (data) {
+                if (data.success) {
+                    // تحديث واجهة المستخدم
+                    $(".like-button").addClass("liked"); // إضافة فئة liked
+                    // إذا كان لديك عداد للإعجابات يمكنك تحديثه هنا
+                }
+            }).fail(function () {
+                alert('Error liking the course. Please try again later.');
+            });
+        }
+
+        function dislikeCourse(courseId) {
+            $.post('@Url.Action("DislikeCourse", "Course")', { courseId: courseId }, function (data) {
+                if (data.success) {
+                    // تحديث واجهة المستخدم
+                    $(".dislike-button").addClass("disliked"); // إضافة فئة disliked
+                }
+            }).fail(function () {
+                alert('Error disliking the course. Please try again later.');
+            });
+        }
+
+        function saveCourse(courseId) {
+            $.post('@Url.Action("SaveCourse", "Course")', { courseId: courseId }, function (data) {
+                if (data.success) {
+                    // تحديث واجهة المستخدم
+                    $(".save-button").addClass("saved"); // إضافة فئة saved
+                }
+            }).fail(function () {
+                alert('Error saving the course. Please try again later.');
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+
