@@ -1,0 +1,15 @@
+﻿@model FinalProject.Models.QuizResult
+
+@{
+    ViewData["Title"] = "Quiz Result";
+}
+
+<div class="container mt-5">
+    <div class="card p-4 text-center" style="background-color: #f9f9f9; border-radius: 10px;">
+        <h2>Quiz Completed!</h2>
+        <p><strong>Quiz ID:</strong> @Model.QuizId</p>
+        <p><strong>Student ID:</strong> @Model.StudentId</p>
+        <h3 class="text-success">Your Score: @Model.Score / @Model.TotalQuestions</h3>
+        <a href="@Url.Action("Quiz", "Quiz")" class="btn btn-primary mt-3">Back to Quizzes</a>
+    </div>
+</div>

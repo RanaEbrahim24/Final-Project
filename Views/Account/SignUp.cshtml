@@ -11,6 +11,15 @@
     <input asp-for="Email" type="text" placeholder="email address" />
     <input asp-for="Password" type="password" placeholder="password" />
     <input asp-for="ConformPassword" type="password" placeholder="confirm password" />
+    <div class="form-group">
+        <label for="Role">Select Role:</label>
+        <select asp-for="Role" class="form-control">
+            <option value="User">User</option>
+            <option value="Admin">Admin</option>
+        </select>
+    </div>
+    <br />
+   
     <button type="submit">Sign-Up</button>
     <p class="message">Already registered? <a asp-action="LogIn">Sign In</a></p>
 </form>

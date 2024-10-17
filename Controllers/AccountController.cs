@@ -7,22 +7,24 @@ namespace FinalProject.Controllers
 {
     public class AccountController : Controller
     {
-       
-            private readonly UserManager<ApplicationUser> _userManager;
-            private readonly SignInManager<ApplicationUser> _signInManager;
-            public AccountController(UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
-            {
-                _userManager = userManager;
-                _signInManager = signInManager;
-            }
-        
-       
-       
+
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+
+        public AccountController(UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager)
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _roleManager = roleManager;
+        }
+
         public IActionResult SignUp()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> SignUp(SignUpViewModels model)
         {
@@ -45,6 +47,11 @@ namespace FinalProject.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    if (await _roleManager.RoleExistsAsync(model.Role))
+                    {
+                        await _userManager.AddToRoleAsync(user, model.Role); // Assign selected role
+                    }
+
                     return RedirectToAction("Index", "Home");
                 }
 
@@ -55,7 +62,10 @@ namespace FinalProject.Controllers
             }
             return View(model);
         }
-        public IActionResult LogIn()
+    
+
+
+public IActionResult LogIn()
         {
             return View();
         }

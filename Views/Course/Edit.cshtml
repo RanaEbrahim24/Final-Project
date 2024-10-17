@@ -1,0 +1,58 @@
+﻿@model FinalProject.Models.Courses
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Edit Course</title>
+
+</head>
+<body>
+    <div class="container">
+        <h2>Edit Course</h2>
+        @using (Html.BeginForm("Edit", "Course", FormMethod.Post))
+        {
+            @Html.HiddenFor(model => model.CourseId)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title)
+                @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ImageUrl)
+                @Html.TextBoxFor(model => model.ImageUrl, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.YouTubeLink)
+                @Html.TextBoxFor(model => model.YouTubeLink, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DurationInHours)
+                @Html.TextBoxFor(model => model.DurationInHours, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProjectCount)
+                @Html.TextBoxFor(model => model.ProjectCount, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AverageRating)
+                @Html.TextBoxFor(model => model.AverageRating, new { @class = "form-control" })
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a href="@Url.Action("Index", "Course")" class="btn btn-secondary">Cancel</a>
+        }
+    </div>
+    <br />
+    <br />
+
+ 
+</body>
+</html>
+

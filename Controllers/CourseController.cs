@@ -2,8 +2,9 @@
 using FinalProject.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace FinalProject.Controllers
 {
@@ -17,119 +18,97 @@ namespace FinalProject.Controllers
         }
 
         // Display course list
-        public ActionResult Index(string category = null)
+        public async Task<IActionResult> Index()
         {
-            var courses = _db.Courses.AsQueryable();
-
-            if (!string.IsNullOrEmpty(category))
-            {
-                courses = courses.Where(c => c.Category == category);
-            }
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var userCourses = _db.userCourses.Where(uc => uc.UserId == userId).ToList(); // جلب بيانات المستخدم
-
-            var viewModel = courses.AsEnumerable().Select(course => new
-            {
-                Course = course,
-                IsLiked = userCourses.Any(uc => uc.CourseId == course.CourseId && uc.Likes > 0),
-                IsDisliked = userCourses.Any(uc => uc.CourseId == course.CourseId && uc.Dislikes > 0),
-                IsSaved = userCourses.Any(uc => uc.CourseId == course.CourseId)
-            }).ToList();
-
-
-
-            return View(viewModel);
+            var courses = await _db.Courses.ToListAsync();
+            return View(courses);
         }
 
-        // Like a course
+        // GET: Course/Create
+        [Authorize(Roles = "Admin")]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Course/Create
         [HttpPost]
-        [Authorize]
-        public IActionResult LikeCourse(int courseId)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Create(Courses course)
         {
-            // Get the UserId of the currently logged-in user
-            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            // Check if userId is null
-            if (string.IsNullOrEmpty(userId))
+            if (ModelState.IsValid)
             {
-                return Json(new { success = false, message = "User is not authenticated." });
+                _db.Courses.Add(course);
+                _db.SaveChanges();
+                return RedirectToAction(nameof(Index));
             }
-
-            var userCourse = _db.userCourses.FirstOrDefault(uc => uc.CourseId == courseId && uc.UserId == userId);
-
-            if (userCourse == null)
-            {
-                userCourse = new UserCourses
-                {
-                    CourseId = courseId,
-                    UserId = userId,
-                    Likes = 1 // Initialize likes
-                };
-                _db.userCourses.Add(userCourse);
-            }
-            else
-            {
-                userCourse.Likes += 1; // Increment like count
-            }
-
-            _db.SaveChanges();
-
-            // Return the current number of likes
-            return Json(new { success = true, likesCount = userCourse.Likes });
+            return View(course);
         }
 
+        // GET: Course/Edit/{id}
+        [Authorize(Roles = "Admin")]
+        public IActionResult Edit(int id)
+        {
+            var course = _db.Courses.Find(id);
+            if (course == null)
+            {
+                return NotFound();
+            }
+            return View(course);
+        }
 
-        // Dislike a course
+        // POST: Course/Edit/{id}
         [HttpPost]
-        [Authorize]
-        public IActionResult DislikeCourse(int courseId)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Edit(int id, Courses course)
         {
-            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var userCourse = _db.userCourses.FirstOrDefault(uc => uc.CourseId == courseId && uc.UserId == userId);
-
-            if (userCourse == null)
+            if (id != course.CourseId)
             {
-                userCourse = new UserCourses
-                {
-                    CourseId = courseId,
-                    UserId = userId,
-                    Dislikes = 1 // Initialize dislikes
-                };
-                _db.userCourses.Add(userCourse);
-            }
-            else
-            {
-                userCourse.Dislikes += 1; // Increment dislike count
+                return NotFound();
             }
 
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _db.Update(course);
+                _db.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(course);
         }
 
-        // Save a course
+        // POST: Course/Delete/{id}
         [HttpPost]
-        [Authorize]
-        public IActionResult SaveCourse(int courseId)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int id)
         {
-            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var userCourse = _db.userCourses.FirstOrDefault(uc => uc.CourseId == courseId && uc.UserId == userId);
-
-            if (userCourse == null)
+            var course = _db.Courses.Find(id);
+            if (course != null)
             {
-                userCourse = new UserCourses
-                {
-                    UserId = userId,
-                    CourseId = courseId,
-                };
-
-                _db.userCourses.Add(userCourse);
+                _db.Courses.Remove(course);
+                _db.SaveChanges();
+            }
+            return RedirectToAction(nameof(Index));
+        }
+        // In CourseController.cs
+        public async Task<IActionResult> Search(string Search)
+        {
+            if (string.IsNullOrWhiteSpace(Search))
+            {
+                return RedirectToAction(nameof(Index)); // Redirect to the index if no search term is provided
             }
 
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+            var courses = await _db.Courses
+                .Where(c => c.Title.Contains(Search) || c.Category.Contains(Search))
+                .ToListAsync();
+
+            return View("Index", courses); // Return the Index view with the filtered courses
         }
+
     }
 }
+
+
+
 
 
 

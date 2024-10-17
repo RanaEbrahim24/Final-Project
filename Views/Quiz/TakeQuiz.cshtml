@@ -1,0 +1,41 @@
+﻿@model FinalProject.Models.Quiz  
+
+@{
+    ViewData["Title"] = "Take the Quiz";
+}
+
+<h2 class="text-center">@Model.QuizTitle</h2>
+
+<form asp-action="SubmitQuiz" method="post">
+    <input type="hidden" name="quizId" value="@Model.QuizId" />
+
+    @foreach (var question in Model.Questions)
+    {
+        <div class="card mb-4 p-4" style="background-color: #f9f9f9; border-radius: 10px;">
+            <h4>@question.Text</h4>
+            <ul class="list-unstyled">
+                @foreach (var answer in question.Answers)
+                {
+                    <li class="form-check">
+                        <input class="form-check-input" type="radio" name="studentAnswers[@question.QuestionId]" value="@answer.AnswerId" id="answer_@answer.AnswerId" />
+                        <label class="form-check-label" for="answer_@answer.AnswerId">
+                            @answer.Text
+                        </label>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Submit Quiz</button>
+    </div>
+</form>
+
+@if (ViewBag.QuizResult != null)
+{
+    var result = ViewBag.QuizResult as FinalProject.Models.QuizResult;
+    <div class="card mb-4 p-4" style="background-color: #d1e7dd; border-radius: 10px;">
+        <h3 class="text-center">Your Score: @result.Score out of @result.TotalQuestions</h3>
+    </div>
+}

@@ -4,9 +4,11 @@
     {
         public string Email { get; set; }
         public string Password { get; set; }
-        public string ConformPassword { get; set; } // تأكد من إضافة هذه الخاصية
-        public string lname { get; set; }
+        public string ConformPassword { get; set; }
         public string fname { get; set; }
+        public string lname { get; set; }
+        public string Role { get; set; } 
     }
-
 }
+
+

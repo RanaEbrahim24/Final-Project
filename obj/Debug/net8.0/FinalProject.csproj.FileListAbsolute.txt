@@ -145,3 +145,4 @@ C:\Users\XPRISTO\source\repos\FinalProject\FinalProject\bin\Debug\net8.0\runtime
 C:\Users\XPRISTO\source\repos\FinalProject\FinalProject\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\XPRISTO\source\repos\FinalProject\FinalProject\obj\Debug\net8.0\FinalProject.csproj.AssemblyReference.cache
 C:\Users\XPRISTO\source\repos\FinalProject\FinalProject\obj\Debug\net8.0\FinalPro.8C09D514.Up2Date
+C:\Users\XPRISTO\source\repos\FinalProject\FinalProject\obj\Debug\net8.0\FinalProject.sourcelink.json

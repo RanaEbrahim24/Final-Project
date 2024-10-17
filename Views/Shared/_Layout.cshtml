@@ -9,6 +9,75 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
       <link rel="stylesheet" href="~/FinalProject.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/assets/css/slicknav.css">
+    <link rel="stylesheet" href="~/assets/css/flaticon.css">
+    <link rel="stylesheet" href="~/assets/css/gijgo.css">
+    <link rel="stylesheet" href="~/assets/css/animate.min.css">
+    <link rel="stylesheet" href="~/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="~/assets/css/slick.css">
+    <link rel="stylesheet" href="~/assets/css/nice-select.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+
+    <style>
+        footer {
+            background-color: #2d3092;
+            padding: 40px 40px; /* تقليل padding */
+            text-align: center;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            font-size: 20px; /* تقليل الحجم العام */
+           height:250px;
+        }
+
+        .social-media {
+            margin-bottom: 10px;
+        }
+
+            .social-media a {
+                color: #fff;
+                margin: 0 10px;
+                font-size: 20px;
+                text-decoration: none;
+            }
+
+        .footer-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+            .footer-menu li {
+                display: inline-block; /* جعل العناصر في سطر واحد */
+                margin: 0 10px; /* تقليل المسافة بين العناصر */
+            }
+
+                .footer-menu li a {
+                    color: #ccc;
+                    text-decoration: none;
+                    font-size: 14px; /* تقليل الحجم */
+                }
+
+                    .footer-menu li a:hover {
+                        color: #fff;
+                    }
+
+        .copyright {
+            margin-top: 15px;
+            font-size: 12px; /* تقليل الحجم */
+            color: #ccc;
+        }
+
+            .copyright strong {
+                color: #fff;
+            }
+    </style>
 </head>
 <body>
     <header>
@@ -30,7 +99,7 @@
                             <div class="row d-flex justify-content-between align-items-center">
                                 <div class="header-info-left">
                                     <ul>
-                                        <li>needhelp@gmail.com</li>
+                                        <li>Courses@gmail.com</li>
                                         <li>666 7475 25252</li>
                                     </ul>
                                 </div>
@@ -69,18 +138,21 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                                        <li> <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">About</a></li>
-                                        <li> <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="courses">Courses</a></li>
-                                        <li>   <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="instructor">Instructors</a></li>
-                                     @*    <li>
-                                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="blog">Blog</a>
-                                            <ul class="submenu">
-                                                <li> <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="blog">Blog</a></li>
-                                                <li> <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="blog_details">Blog Details</a></li>
+                                        <li> <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">About Us</a></li>
+                                        <li> <a class="nav-link text-dark" asp-area="" asp-controller="Course" asp-action="Index">Courses</a></li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" asp-controller="Quiz" asp-action="TakeQuiz" asp-route-id=1>Quiz</a>
+                                        </li>
 
-                                            </ul>
-                                        </li> *@
-                                        <li>  <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="connect">Contact</a></li>
+
+
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/Home/Tips">Tips</a>
+                                        </li>
+                                    
+                                        <li>  <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">Contact Us</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Home/OurTeam">OurTeam</a></li>
                                     </ul>
                                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                                             aria-expanded="false" aria-label="Toggle navigation">
@@ -90,14 +162,14 @@
                             </div>
                             <!-- Header-btn -->
                             <div class="header-search d-none d-lg-block">
-                                <form action="#" class="form-box f-right ">
-                                    <input type="text" name="Search" placeholder="Search Courses">
+                                <form action="@Url.Action("Search", "Course")" method="get" class="form-box f-right">
+                                    <input type="text" name="Search" placeholder="Search Courses" required>
                                     <div class="search-icon">
                                         <i class="fas fa-search special-tag"></i>
                                     </div>
                                 </form>
                             </div>
-                        </div>
+
                         <!-- Mobile Menu -->
                         <div class="col-12">
                             <div class="mobile_menu d-block d-lg-none"></div>
@@ -113,10 +185,27 @@
             @RenderBody()
         </main>
     </div>
+    <footer>
+        <div class="social-media">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <ul class="footer-menu">
+            <li class="nav-item"><a class="nav-link" href="/Home/Index">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/Home/Privacy">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="/Course/Index">Course</a></li>
+           
+            <li class="nav-item"><a class="nav-link" href="/Home/Tips">Tips</a></li>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - FinalProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <li class="nav-item"><a class="nav-link" href="/Home/ContactUs">ContactUs</a></li>
+
+            <li class="nav-item"><a class="nav-link" href="/Home/OurTeam">OurTeam</a></li>
+        </ul>
+        <div class="copyright">
+            <strong>© 2024 Your Company. All rights reserved.</strong>
         </div>
     </footer>
 
@@ -124,5 +213,27 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="~/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/jquery.slicknav.min.js"></script>
+    <script src="~/assets/js/owl.carousel.min.js"></script>
+    <script src="~/assets/js/slick.min.js"></script>
+    <script src="~/assets/js/wow.min.js"></script>
+    <script src="~/assets/js/animated.headline.js"></script>
+    <script src="~/assets/js/jquery.magnific-popup.js"></script>
+    <script src="~/assets/js/gijgo.min.js"></script>
+    <script src="~/assets/js/jquery.nice-select.min.js"></script>
+    <script src="~/assets/js/jquery.sticky.js"></script>
+    <script src="~/assets/js/jquery.counterup.min.js"></script>
+    <script src="~/assets/js/waypoints.min.js"></script>
+    <script src="~/assets/js/contact.js"></script>
+    <script src="~/assets/js/jquery.form.js"></script>
+    <script src="~/assets/js/jquery.validate.min.js"></script>
+    <script src="~/assets/js/mail-script.js"></script>
+    <script src="~/assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/assets/js/plugins.js"></script>
+    <script src="~/assets/js/main.js"></script>
 </body>
 </html>

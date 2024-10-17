@@ -1,0 +1,159 @@
+﻿@{
+    ViewData["Title"] = "Meet Our Team";
+}
+
+<section class="team-section">
+    <h1>Meet Our Team</h1>
+    <div class="team-container">
+
+        <!-- Rana Ebrahim Section -->
+        <div class="team-member">
+            <h3>Rana Ebrahim Abdelkader </h3>
+         
+            <p>"I am a .NET developer currently studying at the Faculty of Engineering, Tanta University. I am passionate about software development and have experience working with various technologies, particularly in .NET and web development."</p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/rana-ebrahim-abdelkader/" class="icon linkedin">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/RanaEbrahim24" class="icon github">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Asmaa Ahmed Section -->
+        <div class="team-member">
+            <h3>Asmaa Ahmed Adelaal</h3>
+            
+            <p>"I am a .NET back-end developer with strong experience in programming. I graduated from the Faculty of Computer Science,
+                and I am passionate about developing innovative software solutions. I have worked on building applications and systems using
+                .NET technologies and am always eager to improve my skills and stay up-to-date with the latest advancements in the field."</p>
+            <div class="social-icons">
+                <a href="https://linkedin.com/in/asmaa-a7med" class="icon linkedin">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/Asmaa-A7med" class="icon github">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Eman Sameh Section -->
+        <div class="team-member">
+            <h3>Eman Sameh Elgendy</h3>
+            <p>
+                "I am a .NET back-end developer with strong experience in programming. I graduated from the Faculty of Computer Science,
+                and I am passionate about developing innovative software solutions. I have worked on building applications and systems using
+                .NET technologies and am always eager to improve my skills and stay up-to-date with the latest advancements in the field."
+            </p>
+            <div class="social-icons">
+                <a href="http://linkedin.com/in/eman-sameh-077123241" class="icon linkedin">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/EM162" class="icon github">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Fatma Mofreh Section -->
+        <div class="team-member">
+            <h3>Fatma Mofreh</h3>
+           
+            <p>"i am Fatma Mofreh soft ware developer (.net backend developer) my target is to be clever freelance"</p>
+            <div class="social-icons">
+                <a href="www.linkedin.com/in/fatma-mofreh-mohammed" class="icon linkedin">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/fatma1072" class="icon github">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- إضافة CSS مخصص لتنسيق الصفحة -->
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+        color: white;
+    }
+
+    .team-section {
+        text-align: center;
+        padding: 50px 0;
+    }
+
+        .team-section h1 {
+            font-size: 2.5rem;
+            color: #2D3092;
+            margin-bottom: 50px;
+        }
+
+    .team-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .team-member {
+        background-color: white; /* اللون الأزرق الداكن */
+        border-radius: 15px;
+        padding: 30px;
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        color: white;
+        border: 1px solid #2D3092;
+    }
+
+        .team-member h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color:#2D3092;
+        }
+
+        .team-member p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        gap: 20px;
+    }
+
+        .social-icons a {
+            font-size: 2rem;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+        }
+
+    .icon.linkedin {
+        background-color: #cce5ff;
+        color: #2D3092;
+    }
+
+    .icon.github {
+        background-color: #333;
+        color: #fff;
+    }
+
+    .icon:hover {
+        opacity: 0.8;
+    }
+</style>

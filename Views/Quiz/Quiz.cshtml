@@ -1,0 +1,19 @@
+﻿@model IEnumerable<FinalProject.Models.Quiz>
+
+@{
+    ViewData["Title"] = "Available Quizzes";
+}
+
+<h2 class="text-center">Available Quizzes</h2>
+
+<ul class="list-group">
+    @foreach (var quiz in Model)
+    {
+        <li class="list-group-item">
+            <a asp-controller="Quiz" asp-action="TakeQuiz" asp-route-id="@quiz.QuizId" class="text-decoration-none">
+                @quiz.QuizTitle
+            </a>
+        </li>
+    }
+</ul>
+

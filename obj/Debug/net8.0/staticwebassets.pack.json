@@ -653,6 +653,26 @@
       "PackagePath": "staticwebassets\\assets\\img\\hero\\heroman.png"
     },
     {
+      "Id": "C:\\Users\\XPRISTO\\source\\repos\\FinalProject\\FinalProject\\wwwroot\\assets\\img\\hero\\mm1.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\hero\\mm1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\XPRISTO\\source\\repos\\FinalProject\\FinalProject\\wwwroot\\assets\\img\\hero\\mm2.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\hero\\mm2.webp"
+    },
+    {
+      "Id": "C:\\Users\\XPRISTO\\source\\repos\\FinalProject\\FinalProject\\wwwroot\\assets\\img\\hero\\mm3.png",
+      "PackagePath": "staticwebassets\\assets\\img\\hero\\mm3.png"
+    },
+    {
+      "Id": "C:\\Users\\XPRISTO\\source\\repos\\FinalProject\\FinalProject\\wwwroot\\assets\\img\\hero\\mm4.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\hero\\mm4.webp"
+    },
+    {
+      "Id": "C:\\Users\\XPRISTO\\source\\repos\\FinalProject\\FinalProject\\wwwroot\\assets\\img\\hero\\mm5.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\hero\\mm5.webp"
+    },
+    {
       "Id": "C:\\Users\\XPRISTO\\source\\repos\\FinalProject\\FinalProject\\wwwroot\\assets\\img\\logo\\loder.png",
       "PackagePath": "staticwebassets\\assets\\img\\logo\\loder.png"
     },
