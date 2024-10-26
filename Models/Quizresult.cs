@@ -6,7 +6,7 @@ namespace FinalProject.Models
     public class QuizResult
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // Ensure only QuizId is an identity
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] 
         public int QuizId { get; set; }
 
         public int StudentId { get; set; }

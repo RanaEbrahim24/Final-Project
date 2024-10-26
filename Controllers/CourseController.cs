@@ -14,11 +14,9 @@ namespace FinalProject.Controllers
 
         public CourseController(AppDbContext db)
         {
-            _db = db; // Dependency Injection
+            _db = db; 
         }
-
-        // Display course list
-        public async Task<IActionResult> Index()
+         public async Task<IActionResult> Index()
         {
             var courses = await _db.Courses.ToListAsync();
             return View(courses);
@@ -89,19 +87,19 @@ namespace FinalProject.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
-        // In CourseController.cs
+        
         public async Task<IActionResult> Search(string Search)
         {
             if (string.IsNullOrWhiteSpace(Search))
             {
-                return RedirectToAction(nameof(Index)); // Redirect to the index if no search term is provided
+                return RedirectToAction(nameof(Index)); 
             }
 
             var courses = await _db.Courses
                 .Where(c => c.Title.Contains(Search) || c.Category.Contains(Search))
                 .ToListAsync();
 
-            return View("Index", courses); // Return the Index view with the filtered courses
+            return View("Index", courses); 
         }
 
     }

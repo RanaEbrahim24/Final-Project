@@ -1,4 +1,3 @@
-// Program.cs
 using FinalProject.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

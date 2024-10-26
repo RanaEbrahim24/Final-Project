@@ -28,22 +28,12 @@ namespace FinalProject.Controllers
 		{
 			return View();
 		}
-		public IActionResult blog()
-		{
-			return View();
-		}
-        public IActionResult blog_details()
-        {
-            return View();
-        }
+	
 		public IActionResult connect()
 		{
 			return View();
 		}
-		public IActionResult instructor()
-		{
-			return View();
-		}
+	
         public IActionResult Privacy()
 		{
 			return View();
@@ -52,10 +42,7 @@ namespace FinalProject.Controllers
         {
             return View();
         }
-		public IActionResult courses()
-		{
-			return View();
-		}
+	
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()
 		{
@@ -66,7 +53,7 @@ namespace FinalProject.Controllers
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
+
         public IActionResult ContactUs(Contactus contactus)
         {
             if (ModelState.IsValid)
@@ -78,10 +65,7 @@ namespace FinalProject.Controllers
             }
             return View(contactus);
         }
-        public IActionResult Success()
-        {
-            return View();
-        }
+     
         public IActionResult Tips()
         {
             return View();

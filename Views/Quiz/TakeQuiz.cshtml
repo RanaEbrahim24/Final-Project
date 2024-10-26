@@ -1,4 +1,4 @@
-﻿@model FinalProject.Models.Quiz  
+﻿@model FinalProject.Models.Quiz
 
 @{
     ViewData["Title"] = "Take the Quiz";
@@ -32,10 +32,23 @@
     </div>
 </form>
 
-@if (ViewBag.QuizResult != null)
+@if (ViewBag.Score != null)
 {
-    var result = ViewBag.QuizResult as FinalProject.Models.QuizResult;
-    <div class="card mb-4 p-4" style="background-color: #d1e7dd; border-radius: 10px;">
-        <h3 class="text-center">Your Score: @result.Score out of @result.TotalQuestions</h3>
+<div class="card mb-4 p-4" style="background-color: #d1e7dd; border-radius: 10px;">
+    <h3 class="text-center">Your Score: @ViewBag.Score out of @ViewBag.TotalQuestions</h3>
+</div>
+}
+@{
+    var errorMessage = TempData["ErrorMessage"];
+}
+
+@if (errorMessage != null)
+{
+    <div class="alert alert-danger">
+        @errorMessage
     </div>
 }
+
+
+
+

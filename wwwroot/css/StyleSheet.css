@@ -1,64 +1,116 @@
-﻿@import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
-body {
+﻿body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    background: url('https://b1826438.smushcdn.com/1826438/wp-content/uploads/2022/06/Best-online-courses-for-kids.jpg?lossy=1&strip=1&webp=1') no-repeat center center fixed;
-    background-size: cover;
     font-family: "Roboto", sans-serif;
+    background-color: #a69ae4; /* إزالة الخلفية */
 }
 
+.login-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff; /* إزالة الخلفية */
+}
 
+.login-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 1200px;
+    width: 100%;
+    height: 100vh; /* يجعل الفورم والصورة يملآن الشاشة بالكامل */
+}
 
-.form {
-    background-color: rgba(255, 255, 255, 0.8);
-    max-width: 360px;
-    padding: 45px;
+.image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* عرض الصورة بالكامل */
+}
+
+.form-section {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+}
+
+    .form-section h2 {
+        font-size: 28px;
+        color: #a69ae4;
+        margin-bottom: 10px;
+    }
+
+    .form-section p {
+        margin-bottom: 20px;
+        color: #a69ae4;
+    }
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+    .input-group input {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: 1px solid #a69ae4;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+.btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #a69ae4;
+    color: #fff;
+}
+
+    .btn-primary:hover {
+        background-color: #bc2df6;
+    }
+
+.message {
     text-align: center;
-    border: 2px solid black;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    margin-top: 20px;
 }
 
-    .form input {
-        font-family: "Roboto", sans-serif;
-        outline: 0;
-        background-color: white;
-        width: 100%;
-        border: 1px solid black;
-        margin: 0 0 15px;
-        padding: 15px;
-        box-sizing: border-box;
+    .message button {
+        width: 48%;
+        margin: 5px;
+        padding: 10px;
         font-size: 16px;
-        color: black;
     }
 
-    .form button {
-        font-family: "Roboto", sans-serif;
-        text-transform: uppercase;
-        outline: 0;
-        background-color: green;
-        width: 100%;
-        border: 0;
-        padding: 15px;
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
+.signup-link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+    .signup-link a {
+        color: #a69ae4;
+        text-decoration: none;
     }
 
-        .form button:hover, .form button:active, .form button:focus {
-            background-color: #43A047;
-        }
-
-    .form .message {
-        margin: 15px 0 0;
-        color: #b3b3b3;
-        font-size: 12px;
-    }
-
-        .form .message a {
-            color: #4CAF50;
-            text-decoration: none;
+        .signup-link a:hover {
+            text-decoration: underline;
         }

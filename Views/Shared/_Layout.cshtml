@@ -1,14 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-   
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - FinalProject</title>
-    
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-      <link rel="stylesheet" href="~/FinalProject.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FinalProject.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="~/assets/css/slicknav.css">
@@ -23,16 +22,27 @@
     <link rel="stylesheet" href="~/assets/css/style.css">
 
     <style>
+        html, body {
+            height: 100%;
+            margin: 0; 
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            flex: 1; 
+        }
+
         footer {
             background-color: #2d3092;
-            padding: 40px 40px; /* تقليل padding */
+            padding: 40px 40px;
             text-align: center;
             color: #fff;
-            position: relative;
-            bottom: 0;
             width: 100%;
-            font-size: 20px; /* تقليل الحجم العام */
-           height:250px;
+            font-size: 20px;
         }
 
         .social-media {
@@ -54,14 +64,14 @@
         }
 
             .footer-menu li {
-                display: inline-block; /* جعل العناصر في سطر واحد */
-                margin: 0 10px; /* تقليل المسافة بين العناصر */
+                display: inline-block;
+                margin: 0 10px;
             }
 
                 .footer-menu li a {
                     color: #ccc;
                     text-decoration: none;
-                    font-size: 14px; /* تقليل الحجم */
+                    font-size: 14px;
                 }
 
                     .footer-menu li a:hover {
@@ -70,7 +80,7 @@
 
         .copyright {
             margin-top: 15px;
-            font-size: 12px; /* تقليل الحجم */
+            font-size: 12px;
             color: #ccc;
         }
 
@@ -83,15 +93,14 @@
     <header>
         <!-- Header Start -->
         <div class="header-area">
-            <div class="main-header ">
+            <div class="main-header">
                 <div class="header-top d-none d-lg-block">
-                    <!-- Left Social -->
                     <div class="header-left-social">
                         <ul class="header-social">
                             <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                             <li><a href="https://www.facebook.com/sai4ull"><i class="fab fa-facebook-f"></i></a></li>
                             <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                            <li> <a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
                         </ul>
                     </div>
                     <div class="container">
@@ -108,14 +117,13 @@
                                         <li>
                                             <a href="~/Account/LogIn" class="user-account for-buy">
                                                 <i class="icon icon-user"></i><span>LogIn</span>
-
                                             </a>
                                         </li>
-                                       <li> <a href="~/Account/SignUp" class="user-account for-buy">
-                                            <i class="icon icon-user"></i><span>SignUp</span>
-                                        </a>
+                                        <li>
+                                            <a href="~/Account/SignUp" class="user-account for-buy">
+                                                <i class="icon icon-user"></i><span>SignUp</span>
+                                            </a>
                                         </li>
-                                 
                                     </ul>
                                 </div>
                             </div>
@@ -123,36 +131,28 @@
                     </div>
                 </div>
                 <div class="header-bottom header-sticky">
-                    <!-- Logo -->
                     <div class="logo d-none d-lg-block">
                         <a href="index.html"><img src="~/assets/img/logo/logo.png" alt=""></a>
                     </div>
                     <div class="container">
                         <div class="menu-wrapper">
-                            <!-- Logo -->
                             <div class="logo logo2 d-block d-lg-none">
                                 <a href="index.html"><img src="~/assets/img/logo/logo.png" alt=""></a>
                             </div>
-                            <!-- Main-menu -->
                             <div class="main-menu d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
                                         <li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                                        <li> <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">About Us</a></li>
-                                        <li> <a class="nav-link text-dark" asp-area="" asp-controller="Course" asp-action="Index">Courses</a></li>
+                                        <li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">About Us</a></li>
+                                        <li><a class="nav-link text-dark" asp-area="" asp-controller="Course" asp-action="Index">Courses</a></li>
                                         <li class="nav-item">
                                             <a class="nav-link" asp-controller="Quiz" asp-action="TakeQuiz" asp-route-id=1>Quiz</a>
                                         </li>
-
-
-
-
                                         <li class="nav-item">
                                             <a class="nav-link" href="/Home/Tips">Tips</a>
                                         </li>
-                                    
-                                        <li>  <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">Contact Us</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Home/OurTeam">OurTeam</a></li>
+                                        <li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">Contact Us</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Home/OurTeam">Our Team</a></li>
                                     </ul>
                                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                                             aria-expanded="false" aria-label="Toggle navigation">
@@ -160,7 +160,6 @@
                                     </button>
                                 </nav>
                             </div>
-                            <!-- Header-btn -->
                             <div class="header-search d-none d-lg-block">
                                 <form action="@Url.Action("Search", "Course")" method="get" class="form-box f-right">
                                     <input type="text" name="Search" placeholder="Search Courses" required>
@@ -169,10 +168,9 @@
                                     </div>
                                 </form>
                             </div>
-
-                        <!-- Mobile Menu -->
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -180,11 +178,13 @@
         </div>
         <!-- Header End -->
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+
     <footer>
         <div class="social-media">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -196,44 +196,28 @@
         <ul class="footer-menu">
             <li class="nav-item"><a class="nav-link" href="/Home/Index">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="/Home/Privacy">About Us</a></li>
-            <li class="nav-item"><a class="nav-link" href="/Course/Index">Course</a></li>
-           
+            <li class="nav-item"><a class="nav-link" href="/Course/Index">Courses</a></li>
             <li class="nav-item"><a class="nav-link" href="/Home/Tips">Tips</a></li>
-
-            <li class="nav-item"><a class="nav-link" href="/Home/ContactUs">ContactUs</a></li>
-
-            <li class="nav-item"><a class="nav-link" href="/Home/OurTeam">OurTeam</a></li>
+            <li class="nav-item">  <a class="nav-link" asp-controller="Quiz" asp-action="TakeQuiz" asp-route-id=1>Quiz</a></li>
+            <li class="nav-item"><a class="nav-link" href="/Home/ContactUs">Contact Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="/Home/OurTeam">Our Team</a></li>
         </ul>
         <div class="copyright">
-            <strong>© 2024 Your Company. All rights reserved.</strong>
+            <strong>© 2024 Your Company. All Rights Reserved.</strong>
         </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-    <script src="~/assets/js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="~/assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="~/assets/js/popper.min.js"></script>
-    <script src="~/assets/js/bootstrap.min.js"></script>
-    <script src="~/assets/js/jquery.slicknav.min.js"></script>
-    <script src="~/assets/js/owl.carousel.min.js"></script>
-    <script src="~/assets/js/slick.min.js"></script>
-    <script src="~/assets/js/wow.min.js"></script>
-    <script src="~/assets/js/animated.headline.js"></script>
-    <script src="~/assets/js/jquery.magnific-popup.js"></script>
-    <script src="~/assets/js/gijgo.min.js"></script>
+    <script src="~/assets/js/modernizr-3.6.0.min.js"></script>
+    <script src="~/assets/js/jquery-3.6.0.min.js"></script>
+    <script src="~/assets/js/jquery.magnific-popup.min.js"></script>
     <script src="~/assets/js/jquery.nice-select.min.js"></script>
-    <script src="~/assets/js/jquery.sticky.js"></script>
-    <script src="~/assets/js/jquery.counterup.min.js"></script>
-    <script src="~/assets/js/waypoints.min.js"></script>
-    <script src="~/assets/js/contact.js"></script>
-    <script src="~/assets/js/jquery.form.js"></script>
-    <script src="~/assets/js/jquery.validate.min.js"></script>
-    <script src="~/assets/js/mail-script.js"></script>
-    <script src="~/assets/js/jquery.ajaxchimp.min.js"></script>
-    <script src="~/assets/js/plugins.js"></script>
+    <script src="~/assets/js/jquery.slicknav.js"></script>
+    <script src="~/assets/js/owl.carousel.min.js"></script>
     <script src="~/assets/js/main.js"></script>
 </body>
 </html>
+
+

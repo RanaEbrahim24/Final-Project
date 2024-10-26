@@ -1,5 +1,4 @@
-﻿// Controllers/QuizController.cs
-using FinalProject.Data;
+﻿using FinalProject.Data;
 using FinalProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,12 +16,6 @@ namespace FinalProject.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
-        {
-            var quizzes = _context.Quizzes.ToList();
-            return View(quizzes);
-        }
-
         public IActionResult TakeQuiz(int id)
         {
             var quiz = _context.Quizzes
@@ -38,43 +31,69 @@ namespace FinalProject.Controllers
             return View(quiz);
         }
 
-        [HttpPost]
         public IActionResult SubmitQuiz(int quizId, Dictionary<int, int> studentAnswers)
         {
-            var quiz = _context.Quizzes
-                .Include(q => q.Questions)
-                .ThenInclude(q => q.Answers)
-                .FirstOrDefault(q => q.QuizId == quizId);
+          
+            var quiz = _context.Quizzes.Include(q => q.Questions)
+                                        .ThenInclude(q => q.Answers)
+                                        .FirstOrDefault(q => q.QuizId == quizId);
 
             if (quiz == null)
             {
                 return NotFound();
             }
 
+          
+            var unansweredQuestions = quiz.Questions
+                .Where(q => !studentAnswers.ContainsKey(q.QuestionId))
+                .ToList();
+
+            if (unansweredQuestions.Any())
+            {
+                
+                TempData["ErrorMessage"] = "Please answer all questions before submitting.";
+                return RedirectToAction("TakeQuiz", new { id = quizId });
+            }
+
             int score = 0;
 
             foreach (var question in quiz.Questions)
             {
-                if (studentAnswers.ContainsKey(question.QuestionId) &&
-                    studentAnswers[question.QuestionId] == question.CorrectAnswerId)
+                Console.WriteLine($"QuestionId: {question.QuestionId}, CorrectAnswerId: {question.CorrectAnswerId}");
+
+                if (studentAnswers.TryGetValue(question.QuestionId, out var selectedAnswerId))
                 {
-                    score++;
+                    Console.WriteLine($"Student Selected AnswerId: {selectedAnswerId}");
+
+                    var correctAnswer = question.Answers.FirstOrDefault(a => a.IsCorrect);
+
+                    if (correctAnswer != null && selectedAnswerId == correctAnswer.AnswerId)
+                    {
+                        score++;
+                        Console.WriteLine("Correct answer!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Incorrect answer.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No answer selected for this question.");
                 }
             }
 
-            var quizResult = new QuizResult
-            {
-                StudentId = 1, // Replace with dynamic student ID later
-                Score = score,
-                TotalQuestions = quiz.Questions.Count
-            };
+            Console.WriteLine($"Final Score: {score} out of {quiz.Questions.Count}");
 
-            // Return the same view with the quiz and result
-            ViewBag.QuizResult = quizResult; // Pass the result to the view
-            return View("TakeQuiz", quiz); // Return the TakeQuiz view
+            ViewData["TotalQuestions"] = quiz.Questions.Count; 
+            return View("Result", score); 
         }
+
+
+
 
     }
 }
+
 
 

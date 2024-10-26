@@ -233,6 +233,10 @@
       "PackagePath": "staticwebassets\\Doc\\syntax-highlighter\\styles\\shThemeRDark.css"
     },
     {
+      "Id": "C:\\Users\\XPRISTO\\source\\repos\\FinalProject\\FinalProject\\wwwroot\\Images\\th.jpg",
+      "PackagePath": "staticwebassets\\Images\\th.jpg"
+    },
+    {
       "Id": "C:\\Users\\XPRISTO\\source\\repos\\FinalProject\\FinalProject\\wwwroot\\assets\\css\\animate.min.css",
       "PackagePath": "staticwebassets\\assets\\css\\animate.min.css"
     },

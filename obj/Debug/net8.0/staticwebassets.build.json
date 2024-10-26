@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IxjjWwsh68r4myegmKZxiaonMFrbtEET5TdOWPIPl1M=",
+  "Hash": "6b9InNLRKQUSTjQ+Zzo3xns1J4p16xYVkt3pex/SDX8=",
   "Source": "FinalProject",
   "BasePath": "_content/FinalProject",
   "Mode": "Default",
@@ -4518,6 +4518,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\XPRISTO\\source\\repos\\FinalProject\\FinalProject\\wwwroot\\Images\\th.jpg",
+      "SourceId": "FinalProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\XPRISTO\\source\\repos\\FinalProject\\FinalProject\\wwwroot\\",
+      "BasePath": "_content/FinalProject",
+      "RelativePath": "Images/th.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\th.jpg"
     },
     {
       "Identity": "C:\\Users\\XPRISTO\\source\\repos\\FinalProject\\FinalProject\\wwwroot\\js\\site.js",

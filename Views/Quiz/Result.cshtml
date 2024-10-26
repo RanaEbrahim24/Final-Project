@@ -1,9 +1,5 @@
-﻿@model FinalProject.Models.QuizResult
+﻿@model int
 
-<h2>Quiz Result</h2>
-<p><strong>Student ID:</strong> @Model.StudentId</p>
-<p><strong>Quiz ID:</strong> @Model.QuizId</p>
-<p><strong>Score:</strong> @Model.Score</p>
-<p><strong>Total Questions:</strong> @Model.TotalQuestions</p>
+<h2>Your Score</h2>
+<p>Your final score is: @Model out of @ViewData["TotalQuestions"]</p>
 
-<a asp-controller="Quiz" asp-action="Index">Back to Quizzes</a>

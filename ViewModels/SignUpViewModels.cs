@@ -7,7 +7,7 @@
         public string ConformPassword { get; set; }
         public string fname { get; set; }
         public string lname { get; set; }
-        public string Role { get; set; } 
+      
     }
 }
 

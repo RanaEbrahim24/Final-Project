@@ -47,11 +47,7 @@ namespace FinalProject.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    if (await _roleManager.RoleExistsAsync(model.Role))
-                    {
-                        await _userManager.AddToRoleAsync(user, model.Role); // Assign selected role
-                    }
-
+                   
                     return RedirectToAction("Index", "Home");
                 }
 
